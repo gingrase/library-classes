@@ -1,0 +1,534 @@
+/* ********************************************************** */
+/* ********************      GLOBAL      ******************** */
+/* ********************************************************** */
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.globalContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  height: 100%;
+}
+
+/* ********************************************************** */
+/* ********************      HEADER      ******************** */
+/* ********************************************************** */
+
+.header {
+  background-color: black;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 60px;
+}
+
+.logo {
+  max-width: 70px;
+  max-height: 50px;
+  margin-left: 15px;
+}
+ 
+.userAvatar {
+  border-color: white;
+  border-style: solid;
+  border-radius: 50%;
+  max-width: 40px;
+}
+
+.mainMenu {
+  gap: 15px;
+  font-family: Helvetica;
+  color: white;
+  font-size: 24px;
+  font-weight: bold;
+  margin-left: 15px;
+}
+
+.userMenu {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-right: 15px;
+  margin-left: 15px;
+  font-family: Helvetica;
+  color: white;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+/* ********************************************************** */
+/* ********************      MENUBAR      ******************* */
+/* ********************************************************** */
+
+.menuBar {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  padding-right: 50px;
+  padding-left: 22px;
+  background-color: #666699;
+  color: white;
+  font-size: 16px;
+  font-family: arial;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.button {
+	display: inline-block;
+	text-align: center;
+	cursor: pointer;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+}
+
+.button:hover {
+	transition-duration: 0.4s;
+	background-color: white;
+	color: black;
+}
+
+.searchBar {
+	position: relative;
+	display: inline-block;
+  width: 100%;	
+  margin-right: 50px;
+}
+
+.mglass {
+	display: inline-block;
+	-webkit-transform: rotate(-45deg);
+  user-select: none;
+}
+
+.searchbutton {
+	font-size: 24px;
+	width: 56px;
+  transition-duration: 0.8s;
+}
+
+.search:focus + .searchbutton {
+	transition-duration: 0.4s;
+	-moz-transition-duration: 0.4s;
+	-webkit-transition-duration: 0.4s;
+	-o-transition-duration: 0.4s;
+	background-color: white;
+	color: black;
+}
+
+.search {
+	position: absolute;
+	left: 55px; 
+	background-color: white;
+	outline: none;
+	border: none;
+	padding: 0;
+	width: 0;
+	height: 100%;
+	z-index: 10;
+	transition-duration: 0.4s;
+	-moz-transition-duration: 0.4s;
+  border-start-end-radius: 10px;
+  border-end-end-radius: 10px;
+}
+
+.search:focus {
+  width: 100%;
+	padding: 0 16px 0 0;
+}
+
+.menuButtons {
+  display: flex;
+  gap: 50px;
+  padding-top: 4px;
+  padding-left: 50px;
+  align-content: center;
+  text-align: center;
+  font-size: 18px;
+}
+
+/* ********************************************************** */
+/* ********************      CARDS      ********************* */
+/* ********************************************************** */
+
+.cards {
+  flex: 1;
+  padding: 5px;  
+  background-color: lightgray;
+}
+
+.cardContainer {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(475px, 1fr));
+  gap: 15px;
+}
+  
+.card {
+  border-radius: 7px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  background-color: white;
+  padding: 20px;
+  display: grid;
+  grid-template-rows: 16px 96px 20px;
+  gap: 20px;
+  align-items: center;
+  justify-items: center;
+  color: black;
+  font-family: Arial;
+}
+  
+.card .title {
+  grid-row: 1;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.card .summary {
+  grid-row: 2;
+  align-self: flex-start;
+  justify-content: left;
+  font-size: 16px;
+}
+
+.card .buttonsContainer {
+  grid-row: 3; 
+  display: flex;
+  justify-content: space-between;
+  gap: 30px;
+}
+
+/* ************************** */
+/* ***      Checkbox      *** */
+/* ************************** */
+
+.customCheckbox {
+  position: relative;
+  padding-left: 40px;
+  padding-right: 4px;
+  margin-bottom: 12px;
+  padding-top: 8px;
+  font-size: 14px;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.customCheckbox input {
+  height: 0;
+  width: 0;
+}
+
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 28px;
+  width: 28px;
+  background-color: white;
+  border-color: black;
+  border-width: 2px;
+  border-style: solid;
+  border-radius: 5px;
+}
+
+.customCheckbox:hover input ~ .checkmark {
+  background-color: lightgray;
+}
+
+.customCheckbox input:checked ~ .checkmark {
+  background-color: green;
+}
+
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+.customCheckbox input:checked ~ .checkmark:after {
+  display: block;
+}
+
+.customCheckbox .checkmark:after {
+  left: 9px;
+  top: 5px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  transform: rotate(45deg);
+}
+
+/* ************************** */
+/* ***      Buttons      **** */
+/* ************************** */
+
+.card button {
+  padding: 5px 40px;
+  border-radius: 20px;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.edit button {
+  background-color: yellowgreen;
+}
+
+.delete button {
+  background-color: red;
+  color: white;
+}
+
+/* ********************************************************** */
+/* *******************      + BUTTON      ******************* */
+/* ********************************************************** */
+
+.addControlButton {
+  border: none;
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 1;
+  outline: transparent;
+  background: linear-gradient(135deg, #2196f3 0%, #666699 100%);
+  color: white;
+  font-size: 32px;
+  box-shadow: 0px 3px 5px -1px rgba(0, 0, 0, 0.2), 0px 6px 10px 0px rgba(0, 0, 0, 0.14), 0px 1px 18px 0px rgba(0, 0, 0, 0.12);
+  transition: transform 0.25s, opacity 0.25s;
+}
+
+.addControlButton:hover {
+  cursor: pointer;
+  transform: rotate(90deg) scale(1.2);
+}
+
+/* ********************************************************** */
+/* ********************      FOOTER      ******************** */
+/* ********************************************************** */
+
+.footer {
+  padding: 5px;
+  background-color: black;
+  text-align: center;
+  font-family: verdana;
+  font-weight: bold;
+  color: white;
+  font-size: 12px;
+}
+
+/* ********************************************************** */
+/* *********************      MODAL      ******************** */
+/* ********************************************************** */
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 2;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0,0,0,0.7);
+}
+
+.modalContainer {
+  background-color: white;
+  margin: 3% auto;
+  padding: 20px;
+  width: 90%;
+}
+
+.modalHeader {
+  margin: 5px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.modalTitle{
+  font-family: helvetica;
+  font-weight: bold;
+  font-size: 32px;
+}
+
+.closeModalButton {
+  border: none;
+  height: 25px;
+  width: 25px;
+  border-radius: 50%;
+  color: white;
+  font-size: 20px;
+  background: linear-gradient(135deg, red 0%, red 100%);
+  box-shadow: 0px 3px 5px -1px rgba(0, 0, 0, 0.2), 0px 6px 10px 0px rgba(0, 0, 0, 0.14), 0px 1px 18px 0px rgba(0, 0, 0, 0.12);
+  transition: transform 0.25s, opacity 0.25s;
+}
+
+.closeModalButton:hover {
+  cursor: pointer;
+  background: red;
+  transform: rotate(90deg) scale(1.2);
+}
+
+
+
+/* ********************************************************** */
+/* ******************      MODAL FORMS     ****************** */
+/* ********************************************************** */
+
+.controlDetailsForm-fieldset {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 30px;
+  gap: 30px;
+  font-family: "arial";
+}
+
+.controlDetailsForm-input {
+ flex-basis: 100%; 
+}
+
+.controlDetailsForm-input label {
+  position: relative;
+  font-weight: bold;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.controlDetailsForm-input label:not([for="phone"])::after {
+  content: "*";
+}
+
+.controlDetailsForm-input input {
+  width: 100%;
+  display: block;
+  position: relative;
+  border-radius: 5px;
+  padding: 1rem;
+  font-size: 18px;
+}
+
+.controlDetailsForm-input > input:focus {
+  outline: none;
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.controlDetailsForm-input > input:invalid:not(:placeholder-shown) {
+  border-color: var(--valid-red);
+  box-shadow: inset 0 0 15px rgba(230, 95, 95, 0.5);
+}
+
+.controlDetailsForm-input > input:valid:not(:placeholder-shown) {
+  border-color: var(--valid-green);
+  box-shadow: inset 0 0 15px rgba(52, 150, 7, 0.5);
+}
+
+.controlDetailsForm-input > input::placeholder {
+  opacity: 0.7;
+}
+
+.controlDetailsForm-input > input:invalid:not(:placeholder-shown) + .error-message {
+  display: block;
+}
+
+.error-message {
+  display: none;
+  color: red;  
+  position: absolute;
+}
+
+.save-button {
+  text-align: center;
+}
+
+.save-button button {
+  font-size: 16px;
+  font-weight: bold;
+  color: white;
+  background-color: darkgreen;
+  border-radius: 7px;
+  padding: 10px 40px;
+}
+
+.save-button button:active {
+  background-color: green;
+}
+
+.update-button {
+  text-align: center;
+}
+
+.update-button button {
+  font-size: 16px;
+  font-weight: bold;
+  color: white;
+  background-color: darkgreen;
+  border-radius: 7px;
+  padding: 10px 40px;
+}
+
+.update-button button:active {
+  background-color: green;
+}
+
+.ask-button {
+  text-align: center;
+}
+
+.ask-button button {
+  font-size: 16px;
+  font-weight: bold;
+  color: white;
+  background-color: #666699;
+  border-radius: 7px;
+  padding: 10px 40px;
+}
+
+.ask-button button:active {
+  background-color: #666685;
+}
+
+select {
+  width: 100%;
+  background-color: white;
+  border-width: 2px;
+  border-radius: 5px;
+  padding: 15px;
+  font-size: 18px;
+}
+
+textarea {
+  width: 100%;
+  border-width: 2px;
+  padding: 15px;
+  font-size: 18px;
+}
+
+.controlDetailsForm-checkbox {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  
+}
+
+.modalButtons {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 5px;
+}
+
+.modalControl {
+  z-index: 1;
+  border: none;
+}
+
+.modalCheckbox {
+  justify-self: center;
+}

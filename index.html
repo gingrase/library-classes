@@ -1,0 +1,197 @@
+<html>
+
+<head>
+  <title>Control Library</title>
+  <script src="script.js" defer></script>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+
+<body>
+  <div class="globalContainer">
+
+    <div class="header">
+      <img class="logo" src="./images/logo-kanply.png" alt="Kanply">
+      <div class="mainMenu">CONTROL LIBRARY</div>
+      <div class="userMenu">
+        <img class="userAvatar" src="./images/Mr-potato.png" alt="Patate">
+        <div class="userName">Patrick Boucher</div>
+      </div>
+    </div>
+
+    <div class="menuBar">
+      <div class="searchBar">
+        <input id="searchField" name="searchField" class="search" type="search" placeholder="Search">
+        <label for="searchField" class="button searchbutton"><span class="mglass">&#9906;</span></label>
+      </div>
+      <div class="menuButtons">
+        <div class="menuItem">Filter</div>
+        <div class="menuItem">Sort</div>
+      </div>
+    </div>
+
+    <div class="cards">
+      <div class="cardContainer">
+      </div>
+    </div>
+
+    <div class="addControl">
+      <button id="addControlButton" class="addControlButton"> + </button>
+    </div>
+
+    <div class="footer">
+      Copyright © Kanply 2023
+    </div>
+
+<!--NEW CONTROL MODAL WINDOW-->
+    <div id="modal" class="modal">
+      <div id="modalContainer" class="modalContainer">
+
+        <div class="modalHeader">
+          <div class="modalTitle">
+            New Control Details
+          </div>
+          <div class="closeModal">
+            <button id="closeModalButton" class="closeModalButton"> &times; </button>
+          </div>
+        </div>
+
+        <form action="" method="get" class="controlDetailsForm" onkeydown="return event.key != 'Enter';">
+          <div class="controlDetailsForm-fieldset">
+            <div class="controlDetailsForm-input">
+              <label for="controlTitle">Control Title</label>
+              <input id="controlTitle" name="controlTitle" type="text" placeholder="Something like: The ISMS domain of applicability must be defined and documented" pattern="^[a-zA-ZèÈêÊéëËÉàÀïÏîÎôÖôÔçÇ0-9 .'-]+$" />
+              <div class="error-message">Please enter a valid title (only letters, numbers and "'", "." or "-")</div>
+            </div>
+            <div class="controlDetailsForm-input selectDropdown">
+              <label for="standards">Control Standard</label>
+              <div class="selectDropdown">
+                <select name="standards" id="standards">
+                  <option value="iso27001:2013">ISO/CEI 27001:2013</option>
+                  <option value="iso27001:2022">ISO/CEI 27001:2022</option>
+                </select>
+              </div>
+              <div class="error-message">Please select a standard</div>
+            </div>
+            <div class="controlDetailsForm-input">
+              <label for="requirementId">Standard requirement ID</label>
+              <input name="requirementId" id="requirementId" type="text" placeholder="Example: A.5.1.1-1" pattern="^[a-zA-ZèÈêÊéëËÉàÀïÏîÎôÖôÔçÇ0-9 .'-]+$" />
+              <div class="error-message">Please select a requirement</div>
+            </div>
+            <div class="controlDetailsForm-input">
+              <label for="requirementReference">Standard requirement reference (URL)</label>
+              <input id="requirementReference" name="requirementReference" type="text" placeholder="Example: https://www.iso.org/isoiec-27001-information-security.html" pattern="^[a-zA-ZèÈêÊéëËÉàÀïÏîÎôÖôÔçÇ0-9 .'-]+$" />
+              <div class="error-message">Please enter a valid URL</div>
+            </div>
+            <div class="controlDetailsForm-input">
+              <label for="requirementDescription">Requirement Description</label>
+              <textarea id="requirementDescription" name="requirementDescription" rows="4" cols="85" maxlength="200"></textarea>
+            </div>
+            <div class="controlDetailsForm-input">
+              <label for="questions">Questions to help understand how you can comply</label>
+              <textarea id="questions" name="questions" rows="4" cols="85"></textarea>
+            </div>
+            <div class="controlDetailsForm-input">
+              <label for="externalLinks">External links as references on this requirement</label>
+              <textarea id="externalLinks" name="externalLinks" rows="4" cols="85"></textarea>
+            </div>
+            <div class="controlDetailsForm-input">
+              <label for="associatedTasks">Tasks to associate to this requirement</label>
+              <textarea id="associatedTasks" name="associatedTasks" rows="4" cols="85"></textarea>
+            </div>
+            <div class="modalButtons">
+              <label class="customCheckbox modalCheckbox">Keep this control Hidden?
+                <!-- <input type="checkbox" id="hide" checked="true"> -->
+                <input type="checkbox" id="hide">
+                <span class="checkmark"></span>
+              </label>  
+              <div class="ask-button">
+                <button id="ask-button">Ask for Kanply's help?</button>
+              </div>
+              <div class="save-button">
+                <button id="save-button">Save new control</button>
+              </div>
+            </div>
+          </div>
+        </form>
+
+      </div>
+    </div>
+
+<!--EDIT CONTROL MODAL WINDOW-->
+    <div id="editModal" class="modal">
+      <div id="editModalContainer" class="modalContainer">
+
+        <div class="modalHeader">
+          <div class="modalTitle">
+            Edit Control Details
+          </div>
+          <div class="closeEditModal">
+            <button id="closeEditModalButton" class="closeModalButton"> &times; </button>
+          </div>
+        </div>
+
+        <form action="" method="get" class="controlDetailsForm" onkeydown="return event.key != 'Enter';">
+          <div class="controlDetailsForm-fieldset">
+            <div class="controlDetailsForm-input">
+              <label for="editControlTitle">Control Title</label>
+              <input id="editControlTitle" name="editControlTitle" type="text" placeholder="Something like: The ISMS domain of applicability must be defined and documented" pattern="^[a-zA-ZèÈêÊéëËÉàÀïÏîÎôÖôÔçÇ0-9 .'-]+$" />
+              <div class="error-message">Please enter a valid title (only letters, numbers and "'", "." or "-")</div>
+            </div>
+            <div class="controlDetailsForm-input selectDropdown">
+              <label for="editStandards">Control Standard</label>
+              <div class="selectDropdown">
+                <select name="editStandards" id="editStandards">
+                  <option value="iso27001:2013">ISO/CEI 27001:2013</option>
+                  <option value="iso27001:2022">ISO/CEI 27001:2022</option>
+                </select>
+              </div>
+              <div class="error-message">Please select a standard</div>
+            </div>
+            <div class="controlDetailsForm-input">
+              <label for="editRequirementId">Standard requirement ID</label>
+              <input name="editRequirementId" id="editRequirementId" type="text" placeholder="Example: A.5.1.1-1" pattern="^[a-zA-ZèÈêÊéëËÉàÀïÏîÎôÖôÔçÇ0-9 .'-]+$" />
+              <div class="error-message">Please select a requirement</div>
+            </div>
+            <div class="controlDetailsForm-input">
+              <label for="editRequirementReference">Standard requirement reference (URL)</label>
+              <input id="editRequirementReference" name="editRequirementReference" type="text" placeholder="Example: https://www.iso.org/isoiec-27001-information-security.html" pattern="^[a-zA-ZèÈêÊéëËÉàÀïÏîÎôÖôÔçÇ0-9 .'-]+$" />
+              <div class="error-message">Please enter a valid URL</div>
+            </div>
+            <div class="controlDetailsForm-input">
+              <label for="editRequirementDescription">Requirement Description</label>
+              <textarea id="editRequirementDescription" name="editRequirementDescription" rows="4" cols="85" maxlength="200"></textarea>
+            </div>
+            <div class="controlDetailsForm-input">
+              <label for="editQuestions">Questions to help understand how you can comply</label>
+              <textarea id="editQuestions" name="editQuestions" rows="4" cols="85"></textarea>
+            </div>
+            <div class="controlDetailsForm-input">
+              <label for="externalLinks">External links as references on this requirement</label>
+              <textarea id="editExternalLinks" name="externalLinks" rows="4" cols="85"></textarea>
+            </div>
+            <div class="controlDetailsForm-input">
+              <label for="associatedTasks">Tasks to associate to this requirement</label>
+              <textarea id="editAssociatedTasks" name="associatedTasks" rows="4" cols="85"></textarea>
+            </div>
+            <div class="modalButtons">
+              <label class="customCheckbox modalCheckbox">Keep this control Hidden?
+                <input type="checkbox" id="editHide">
+                <span class="checkmark"></span>
+              </label>
+              <div class="ask-button">
+                <button id="edit-ask-button">Ask for Kanply's help?</button>
+              </div>
+              <div class="update-button">
+                <button id="update-button">Update control</button>
+              </div>
+            </div>
+          </div>
+        </form>
+
+      </div>
+    </div>
+
+  </div>
+</body>
+
+</html>
